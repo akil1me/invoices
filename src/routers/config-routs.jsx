@@ -2,14 +2,19 @@ import { useSelector } from "react-redux";
 import { Navigate, useRoutes } from "react-router-dom";
 
 // pages
-import { AddInvoices, EditeInvoices, Invoices, Login, ViewInvoices, NotFound } from "../pages";
+import { AddInvoices, EditeInvoices, Invoices, Login, ViewInvoices, NotFound, Register } from "../pages";
 
-const loginRout = [
+const authRout = [
   {
     path: "/login",
     element: <Login />
 
   },
+
+  {
+    path: "/register",
+    element: <Register />
+  }
 ]
 
 export const ConfigRouts = () => {
@@ -44,6 +49,6 @@ export const ConfigRouts = () => {
     }
   ]
 
-  const elements = useRoutes([...(!user ? loginRout : []), ...routs]);
+  const elements = useRoutes([...(!user ? authRout : []), ...routs]);
   return elements;
 }

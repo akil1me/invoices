@@ -5,3 +5,4 @@ export * from "./add-invoices";
 export * from "./login";
 export * from "./invoices";
 export * from "./not-found";
+export * from "./register";

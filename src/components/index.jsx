@@ -3,7 +3,7 @@ export * from "./invoices-header";
 export * from "./container";
 export * from "./site-bar/";
 export * from "./invoices-list";
-export * from "./logim-form";
+export * from "./auth-form";
 export * from "./loader";
 export * from "./go-back";
 export * from "./view-header";
