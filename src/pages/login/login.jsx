@@ -43,6 +43,6 @@ export const Login = () => {
       onSubmit={handleSubmitLogin}
       title="Login" loading={loading}
       error={error}
-      isRegister={<Link to={"/register"}>If not registered, register here</Link>} />
+      isRegister={<Link to={"/register"}>register here</Link>} />
   )
 }
