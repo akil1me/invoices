@@ -20,9 +20,8 @@ export const { actions: userActions, reducer: userReducer } = createSlice({
       else {
         state.user = null;
         state.token = null;
-
-        localStorage.setItem("user", "")
-        localStorage.setItem("token", "")
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
       }
 
     }
