@@ -18,12 +18,11 @@ export const { actions: userActions, reducer: userReducer } = createSlice({
       }
 
       else {
-        state.user = null;
-        state.token = null;
+        state.user = payload;
+        state.token = payload;
         localStorage.removeItem("user")
         localStorage.removeItem("token")
       }
-
     }
   }
 
