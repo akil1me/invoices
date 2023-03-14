@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { AuthForm } from "../../components";
-import { axiosInstans } from "../../services";
+import { API_URL, axiosInstans } from "../../services";
 
 export const Register = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -15,24 +15,33 @@ export const Register = () => {
   const handleSubmitLogin = (email, password) => {
     const user = {
       email,
-      password
-    }
-    setLoading(true)
+      password,
+    };
+    setLoading(true);
 
     axios({
-      url: "http://167.235.158.238:3001/register",
+      url: API_URL + "register",
       method: "POST",
       data: user,
-
     })
       .then(({ data }) => {
-        axiosInstans.defaults.headers.Authorization = `Bearer ${data.accessToken}`
-        axios.defaults.headers.common["Authorization"] = `Bearer ${data.accessToken}`
-        navigate("/login")
+        axiosInstans.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${data.accessToken}`;
+        navigate("/login");
       })
       .catch((err) => setError(err.response.data))
-      .finally(() => setLoading(false))
-  }
+      .finally(() => setLoading(false));
+  };
 
-  return <AuthForm onSubmit={handleSubmitLogin} title="Register" loading={loading} error={error} />
-}
+  return (
+    <AuthForm
+      onSubmit={handleSubmitLogin}
+      title="Register"
+      loading={loading}
+      error={error}
+      isLogin={<Link to={"/login"}>Login here</Link>}
+    />
+  );
+};
